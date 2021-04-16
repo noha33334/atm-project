@@ -1,74 +1,6 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
-
-
- class Account {
-	String accountName;
-	String accountPass;
-	double balance;
-	public Account(String name,String password,double balance){
-		this.accountName=Objects.requireNonNull(name);
-		this.accountPass=Objects.requireNonNull(password);
-		this.balance=balance;
-	}
-	public boolean isMatching(String name, String encryptedPassword) {
-        return Objects.equals(this.accountName, name) 
-                    && Objects.equals(this.accountPass, encryptedPassword);
-    }
-	public double Deposit(){
-		return this.balance;
-	}
-	public double withdrawl(double amount){
-		this.balance=this.balance-amount;
-		return balance;
-	}
-
-
-}
-
-class AccountManager{
-	public List<Account> accounts=getAccounts();
-
-    public void creatAccount(String name,String password,double balance){
-		
-        new Account(name,password,balance);
-
-	}
-
-
-	public List<Account> getAccounts(){
-		return Arrays.asList(new Account("a0","a0",9999),
-				new Account("a1","a1",8888),
-				new Account("a2","a2",77777));
-	}
-	public Account selectAccount(String accountName,String accountPassword){
-		System.out.print(accounts);
-		for (Account account:accounts){
-			if(account.isMatching(accountName, accountPassword)){
-				System.out.print("Matched, Welcome "+accountName+"Your balance is "+account.balance);
-				return account;
-			}
-		}
-		System.out.print("Not Matched");
-		return null;
-	}
-
-
-    public void transfer(int from , int to , double balance){
-        Account x = accounts.get(from);
-         x.balance =x.balance -  balance;
-         Account a = accounts.get(to);
-         a.balance =a.balance +  balance;
-
-	}
-
-}
-
-
-class ATM{
+class App{
 	static Scanner scanner=new Scanner(System.in);
 	static String accountHolderName = null;
 	static String accountPass=null;
@@ -96,7 +28,7 @@ class ATM{
                     + "6.Add a new account\n");	
 			switch(option){
 			case 1:
-				System.out.print(customer.Deposit());
+				System.out.print(customer.Transactions_History());
 				break;
 			case 2:
 				System.out.println("Enter the amount to withdrraw");
@@ -138,12 +70,3 @@ class ATM{
 		
 		}
 	}
-
-
-
-
-
-
-
-
-
